@@ -1,0 +1,193 @@
+Can't create, edit, or upload … Not enough storage. Get 100 GB of storage for ₱89.00 ₱0 for 1 month.
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: url("bg.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'TT Ramillas', cursive;
+            font-size: 36px;
+            color: #333;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            border: 1px solid transparent; 
+            padding: 5px; 
+            border-radius: 5px; 
+            transition: border-color 0.3s ease; 
+        }
+
+        .menu a:hover {
+            border-color: #333; 
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .search-bar input[type="text"] {
+            border-radius: 5px;
+            padding: 0 60px;
+            background-color: #D9D8D2;
+            color: #B8BBBB;
+            background-image: url("search.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .cart-logo {
+            background-image: url("bas.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .main-text {
+            font-size: 48px;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .login-signup {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .login-signup form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+
+        .login-signup label {
+            margin-bottom: 10px;
+        }
+
+        .login-signup input[type="text"],
+        .login-signup input[type="password"] {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .login-signup button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer; 
+        }
+
+        .footer {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-top: auto; 
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 18px;
+            border: 1px solid transparent; 
+            padding: 5px; 
+            border-radius: 5px; 
+            transition: border-color 0.3s ease; 
+        }
+
+        .footer a:hover {
+            border-color: #333;
+        }
+
+        .frosted-pane {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div> <img src="ideal.png" style="width: 100px; height: 100px;"></div>
+        <div class="menu">
+            <a href="product.html">Products</a>
+            <a href="https://shopee.ph/?gclid=CjwKCAjwvuGJBhB1EiwACU1AiUOvtKsbRjhNckbmsh_MbAuSe5z9oZrbdHpc4WOXnSsUbj2dHLl4VRoC6kQQAvD_BwE">Salvage</a>
+            <a href="https://shopee.ph/?gclid=CjwKCAjwvuGJBhB1EiwACU1AiUOvtKsbRjhNckbmsh_MbAuSe5z9oZrbdHpc4WOXnSsUbj2dHLl4VRoC6kQQAvD_BwE">Categories</a>
+            <a href="https://shopee.ph/?gclid=CjwKCAjwvuGJBhB1EiwACU1AiUOvtKsbRjhNckbmsh_MbAuSe5z9oZrbdHpc4WOXnSsUbj2dHLl4VRoC6kQQAvD_BwE">Startups</a>
+            <a href="18+.html">18+</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <div class="cart-logo"></div>
+        </div>
+    </div>
+    <div><img src="wee.png"ee style="width: 150px; height: 100px;"> </div>
+    <div class="login-signup">
+        <form>
+            <label for="username">Username:</label>  
+            <input type="text" id="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Login</button>
+        </form>
+        <a href="signup.html">Sign Up</a>
+    </div>
+    <div class="footer">
+        <div class="frosted-pane">
+            <a href="aboutus.html" target="_blank">ABOUT US</a>
+            <a href="seller.html" target="_blank">SELLER PLATFORM</a>
+            <a href="customers.html" target="_blank">CUSTOMER SERVICE</a>
+            <a href="platfom.html" target="_blank">PLATFORM</a>
+        </div>
+    </div>
+</body>
+</html>
