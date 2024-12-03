@@ -1,0 +1,157 @@
+/* Basebook CSS Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Light gray background */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #4267B2; /* Facebook blue */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    height: 40px; /* Adjust logo size */
+}
+
+.menu-container {
+    position: absolute;
+    right: 20px; /* Position the hamburger menu on the right */
+    top: 15px; /* Align with the header */
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: #f0f2f5;
+}
+
+h1 {
+    flex: 1; /* Allow the heading to grow and center */
+    text-align: center; /* Center the welcome message */
+    margin: 0; /* Remove default margin */
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+.dashboard-info, .post-section, .message-section, .messages-section, .posts-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4267B2; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #365eab; /* Darker shade on hover */
+}
+
+.post {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-header img {
+    margin-right: 10px;
+}
+
+.post-time {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
+.post-actions a {
+    text-decoration: none;
+    color: #4267B2;
+    margin-right: 15px;
+}
+
+footer {
+    background-color: #4267B2;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        width: 100%;
+    }
+}
