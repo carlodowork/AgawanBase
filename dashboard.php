@@ -98,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
     } 
 } 
 
-// ```php
 // Fetch users for messaging 
 $stmt = $conn->prepare("SELECT id, username FROM users WHERE id != ?"); 
 $stmt->execute([$userId]); 
@@ -128,9 +127,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['respond_request'])) {
 
     if ($request && $request['receiver_id'] == $userId) {
         if ($action === 'accept') {
-            // Add to friends table
+            // Add both users to the friends table
             $stmt = $conn->prepare("INSERT INTO friends (user1_id, user2_id) VALUES (?, ?)");
             $stmt->execute([$request['sender_id'], $request['receiver_id']]);
+            $stmt = $conn->prepare("INSERT INTO friends (user1_id, user2_id) VALUES (?, ?)");
+            $stmt->execute([$request['receiver_id'], $request['sender_id']]); // Add the reverse relationship
         }
 
         // Update request status
@@ -151,7 +152,7 @@ $friendRequests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $conn->prepare("SELECT u.username 
                         FROM friends f
                         JOIN users u ON (f.user1_id = u.id OR f.user2_id = u.id)
-                        WHERE (f.user1_id = ? OR f.user2_id = ?) AND u.id != ? AND f.status = 'accepted'");
+                        WHERE (f.user1_id = ? OR f.user2_id = ?) AND u.id != ?");
 $stmt->execute([$userId, $userId, $userId]);
 $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?> 
@@ -212,9 +213,8 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .menu a:hover { 
             background-color: #f0f2f5; 
         }
-        ```php
         h1 { 
-            text-align: center; 
+            text-align : center; 
             margin: 0; 
         }
         h2 { 
@@ -322,7 +322,7 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <section class="post-section"> 
             <h2>Upload Profile Picture</h2> 
             <form method="POST" action="" enctype="multipart/form-data"> 
-                <input type="file" name="image" accept="image/*" required> 
+                <input type="file" name="image" accept="image/*">
                 <button type="submit">Upload</button> 
             </form> 
         </section>
@@ -386,9 +386,13 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <section class="friends-list">
             <h2>Your Friends</h2>
-            <?php foreach ($friends as $friend): ?>
-                <p><?php echo htmlspecialchars($friend['username']); ?></p>
-            <?php endforeach; ?>
+            <?php if (empty($friends)): ?>
+                <p>You have no friends yet.</p>
+            <?php else: ?>
+                <?php foreach ($friends as $friend): ?>
+                    <p><?php echo htmlspecialchars($friend['username']); ?></p>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </section>
 
         <section class="messages-section"> 
@@ -404,24 +408,24 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </section>
 
         <section class="posts-section"> 
-            <h2>Posts</h2> 
-            <?php foreach ($posts as $post): ?> 
-                <div class="post"> 
-                    <div class="post-header"> 
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($post['profile_picture']); ?>" alt="Profile Picture" style="width:50px; height:50px; border-radius:50%;"> 
-                        <strong><?php echo htmlspecialchars($post['username']); ?></strong> <span class="post-time">(<?php echo htmlspecialchars($post['created_at']); ?>)</span> 
-                    </div> 
-                    <p><?php echo htmlspecialchars($post['content']); ?></p> 
-                    <div class="post-actions"> 
-                        <a href="?like=<?php echo $post['id']; ?>"> 
-                            <img src="like.png" alt="Like" style="width: 20px; height: 30px;"> 
-                            <span>(<?php echo $post['likes_count']; ?>)</span> 
-                        </a> 
-                        <a href="?delete=<?php echo $post['id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
-                    </div> 
-                </div> 
-            <?php endforeach; ?> 
-        </section> 
+    <h2>Posts</h2> 
+    <?php foreach ($posts as $post): ?> 
+        <div class="post"> 
+            <div class="post-header"> 
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($post['profile_picture']); ?>" alt="Profile Picture" style="width:50px; height:50px; border-radius:50%;"> 
+                <strong><?php echo htmlspecialchars($post['username']); ?></strong> <span class="post-time">(<?php echo htmlspecialchars($post['created_at']); ?>)</span> 
+            </div> 
+            <p><?php echo htmlspecialchars($post['content']); ?></p> 
+            <div class="post-actions"> 
+                <a href="?like=<?php echo $post['id']; ?>">  <!-- Corrected line -->
+                    <img src="likee.png" alt="Like" style="width: 30px; height: 30px;"> 
+                    <span>(<?php echo $post['likes_count']; ?>)</span> 
+                </a> 
+                <a href="?delete=<?php echo $post['id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+            </div> 
+        </div> 
+    <?php endforeach; ?> 
+</section>
     </div> 
 </main> 
 
